@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--MainVC-->
         <scene sceneID="IgI-oD-f5a">
             <objects>
-                <tableViewController id="jM7-4o-vWH" sceneMemberID="viewController">
+                <tableViewController id="jM7-4o-vWH" customClass="MainVC" customModule="Alarmed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="bh2-Wu-Guv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,18 +20,18 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XJA-yn-kmN" id="x27-IF-eXB">
-                                    <frame key="frameInset" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o8H-fE-qkx">
-                                            <frame key="frameInset" minX="15" minY="12" width="33.5" height="20.5"/>
+                                            <frame key="frameInset" minX="15" minY="11" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WSQ-CM-FoO">
-                                            <frame key="frameInset" minX="296" minY="12" width="44" height="20.5"/>
+                                            <frame key="frameInset" minX="296" minY="11" width="44" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="1036" y="120.98950524737631"/>
         </scene>
-        <!--Table View Controller-->
+        <!--GroupVC-->
         <scene sceneID="bOh-bt-jdF">
             <objects>
-                <tableViewController id="bZ2-1P-h9H" sceneMemberID="viewController">
+                <tableViewController id="bZ2-1P-h9H" customClass="GroupVC" customModule="Alarmed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="gJP-69-HkL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,6 +75,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="bZ2-1P-h9H" id="pjy-9x-tUC"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -96,7 +99,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cx4-Mn-uwA"/>
+                                        <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cx4-Mn-uwA">
+                                            <connections>
+                                                <action selector="switchChanged:" destination="bZ2-1P-h9H" eventType="valueChanged" id="pnr-2p-GQu"/>
+                                            </connections>
+                                        </switch>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="cx4-Mn-uwA" secondAttribute="trailing" id="21D-JF-hO3"/>
@@ -110,18 +117,18 @@
                                 <rect key="frame" x="0.0" y="208" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4bR-Tx-ypr" id="pQD-gl-iZh">
-                                    <frame key="frameInset" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2IY-wG-iUI">
-                                            <frame key="frameInset" minX="15" minY="12" width="33.5" height="20.5"/>
+                                            <frame key="frameInset" minX="15" minY="11" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rww-8c-1uR">
-                                            <frame key="frameInset" minX="296" minY="12" width="44" height="20.5"/>
+                                            <frame key="frameInset" minX="296" minY="11" width="44" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -144,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="1743" y="118"/>
         </scene>
-        <!--Table View Controller-->
+        <!--AlarmVC-->
         <scene sceneID="P0F-5T-eEY">
             <objects>
-                <tableViewController id="F3m-cs-3Is" sceneMemberID="viewController">
+                <tableViewController id="F3m-cs-3Is" customClass="AlarmVC" customModule="Alarmed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="MFe-Vt-JqK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,10 +169,13 @@
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name this alarm" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5Fz-sc-YoM">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name the alarm" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5Fz-sc-YoM">
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="F3m-cs-3Is" id="VUW-xT-VS1"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -186,6 +196,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="F3m-cs-3Is" id="o3u-Wr-mAU"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -214,6 +227,9 @@
                                                             <date key="date" timeIntervalSinceReferenceDate="499289130.44312602">
                                                                 <!--2016-10-27 19:25:30 +0000-->
                                                             </date>
+                                                            <connections>
+                                                                <action selector="datePickerChanged:" destination="F3m-cs-3Is" eventType="valueChanged" id="SyY-Gc-Z0I"/>
+                                                            </connections>
                                                         </datePicker>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,11 +284,22 @@
                             <outlet property="delegate" destination="F3m-cs-3Is" id="ODS-9E-jkM"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="caption" destination="xy4-T2-eCg" id="jWM-Fu-uhH"/>
+                        <outlet property="datePicker" destination="gbV-NO-fBA" id="aet-sg-iWU"/>
+                        <outlet property="imageView" destination="zj4-8b-VWS" id="iyz-ib-4Hg"/>
+                        <outlet property="name" destination="5Fz-sc-YoM" id="lB4-1Z-Rgt"/>
+                        <outlet property="tapToSelectImage" destination="X5O-gA-Zvk" id="I2y-xw-N0w"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hN-dX-5Et" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="YdN-3g-gCX"/>
+                <tapGestureRecognizer id="YdN-3g-gCX">
+                    <connections>
+                        <action selector="imageViewTapped:" destination="F3m-cs-3Is" id="JSX-Gc-33v"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2448.8000000000002" y="115.59220389805098"/>
+            <point key="canvasLocation" x="2446" y="-114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ehI-8L-QoE">

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainVC.swift
 //  Alarmed
 //
 //  Created by Dan Lindsay on 2016-10-27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
