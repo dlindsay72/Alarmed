@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7B7505441DC2A67E00702872 /* GroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7505431DC2A67E00702872 /* GroupVC.swift */; };
 		7B7505461DC2A69C00702872 /* AlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7505451DC2A69C00702872 /* AlarmVC.swift */; };
+		7B75054B1DC2AA6700702872 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75054A1DC2AA6700702872 /* Group.swift */; };
+		7B75054D1DC2AA9F00702872 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75054C1DC2AA9F00702872 /* Alarm.swift */; };
 		7BAD1F921DC284E000373DA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD1F911DC284E000373DA1 /* AppDelegate.swift */; };
 		7BAD1F941DC284E000373DA1 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD1F931DC284E000373DA1 /* MainVC.swift */; };
 		7BAD1F971DC284E000373DA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BAD1F951DC284E000373DA1 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		7B7505431DC2A67E00702872 /* GroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupVC.swift; sourceTree = "<group>"; };
 		7B7505451DC2A69C00702872 /* AlarmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmVC.swift; sourceTree = "<group>"; };
+		7B75054A1DC2AA6700702872 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		7B75054C1DC2AA9F00702872 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		7BAD1F8E1DC284E000373DA1 /* Alarmed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAD1F911DC284E000373DA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BAD1F931DC284E000373DA1 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -39,6 +43,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B7505471DC2A9FD00702872 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BAD1F911DC284E000373DA1 /* AppDelegate.swift */,
+				7BAD1F931DC284E000373DA1 /* MainVC.swift */,
+				7B7505431DC2A67E00702872 /* GroupVC.swift */,
+				7B7505451DC2A69C00702872 /* AlarmVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7B7505481DC2AA0600702872 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BAD1F951DC284E000373DA1 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7B7505491DC2AA0D00702872 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B75054A1DC2AA6700702872 /* Group.swift */,
+				7B75054C1DC2AA9F00702872 /* Alarm.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		7BAD1F851DC284E000373DA1 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +90,12 @@
 		7BAD1F901DC284E000373DA1 /* Alarmed */ = {
 			isa = PBXGroup;
 			children = (
-				7BAD1F911DC284E000373DA1 /* AppDelegate.swift */,
-				7BAD1F931DC284E000373DA1 /* MainVC.swift */,
-				7BAD1F951DC284E000373DA1 /* Main.storyboard */,
+				7B7505491DC2AA0D00702872 /* Model */,
+				7B7505481DC2AA0600702872 /* View */,
+				7B7505471DC2A9FD00702872 /* Controller */,
 				7BAD1F981DC284E000373DA1 /* Assets.xcassets */,
 				7BAD1F9A1DC284E000373DA1 /* LaunchScreen.storyboard */,
 				7BAD1F9D1DC284E000373DA1 /* Info.plist */,
-				7B7505431DC2A67E00702872 /* GroupVC.swift */,
-				7B7505451DC2A69C00702872 /* AlarmVC.swift */,
 			);
 			path = Alarmed;
 			sourceTree = "<group>";
@@ -146,7 +176,9 @@
 				7B7505441DC2A67E00702872 /* GroupVC.swift in Sources */,
 				7BAD1F941DC284E000373DA1 /* MainVC.swift in Sources */,
 				7B7505461DC2A69C00702872 /* AlarmVC.swift in Sources */,
+				7B75054B1DC2AA6700702872 /* Group.swift in Sources */,
 				7BAD1F921DC284E000373DA1 /* AppDelegate.swift in Sources */,
+				7B75054D1DC2AA9F00702872 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

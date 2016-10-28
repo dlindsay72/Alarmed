@@ -10,7 +10,7 @@ import UIKit
 
 class GroupVC: UITableViewController {
     
-    
+    var group: Group!
 
     override func viewDidLoad() {
         super.viewDidLoad()

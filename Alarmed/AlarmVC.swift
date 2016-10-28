@@ -13,15 +13,15 @@ class AlarmVC: UITableViewController {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var caption: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var tapToSelectImage: UILabel!
+    
+    var alarm: Alarm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,14 +36,6 @@ class AlarmVC: UITableViewController {
     @IBAction func imageViewTapped(_ sender: AnyObject) {
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
