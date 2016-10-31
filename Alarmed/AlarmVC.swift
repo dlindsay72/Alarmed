@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlarmVC: UITableViewController {
+class AlarmVC: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var caption: UITextField!
@@ -35,6 +35,18 @@ class AlarmVC: UITableViewController {
 
     @IBAction func imageViewTapped(_ sender: AnyObject) {
         
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        alarm.name = name.text!
+        title = alarm.name
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
     
 
