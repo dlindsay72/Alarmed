@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class MainVC: UITableViewController {
     
@@ -120,6 +121,9 @@ class MainVC: UITableViewController {
             
             print("Failed to save")
         }
+        
+        
+        updateNotifications()
     }
     
     func load() {
@@ -137,6 +141,117 @@ class MainVC: UITableViewController {
         }
     }
     
+    func updateNotifications() {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .sound]) { [unowned self] (granted, error) in
+            
+            if granted {
+                self.createNotifications()
+            }
+        }
+    }
+    
+    func createNotifications() {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        //remove any pending notifications
+        center.removeAllPendingNotificationRequests()
+        
+        for group in groups {
+            
+            //ignore disabled groups
+            guard group.enabled == true else { continue }
+            
+            for alarm in group.alarms {
+                
+                //create a notification request for each alarm
+                let notification = createNotificationRequest(group: group, alarm: alarm)
+                
+                //schedule that notification for delivery
+                center.add(notification) { error in
+                    
+                    if let error = error {
+                        print("Error scheduling notifications: \(error)")
+                    }
+                }
+            }
+        }
+    }
+    
+    func createNotificationRequest(group: Group, alarm: Alarm) -> UNNotificationRequest{
+        
+        //start by creating the contnent for the notification
+        let content = UNMutableNotificationContent()
+        
+        //assign the users name and caption
+        content.title = alarm.name
+        content.body = alarm.caption
+        
+        //give it an identifier we can attach to custom buttons later on
+        content.categoryIdentifier = "alarm"
+        
+        //attach the group ID and alarm ID for this alarm
+        content.userInfo = ["group": group.id, "alarm": alarm.id]
+        
+        //if the user requested a sound for this group, attach their default alert sound
+        if group.playSound {
+            
+            content.sound = UNNotificationSound.default()
+        }
+        //use createNotificationAttachments to attach a picture for this alert if there is one
+        content.attachments = createNotificationAttachments(alarm: alarm)
+        
+        //get a calendar ready to pull out the date components
+        let cal = Calendar.current
+        
+        //pull out the hour and minute from this alarm's date
+        var dateComponents = DateComponents()
+        dateComponents.hour = cal.component(.hour, from: alarm.time)
+        dateComponents.minute = cal.component(.minute, from: alarm.time)
+        
+        //create a trigger matching those date components, set to repeat
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        //testing trigger
+       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: true)
+        
+        //combine the content and the trigger to create a notification request
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        //pass that object back to createNotifications() for scheduling
+        return request
+    }
+    
+    func createNotificationAttachments(alarm: Alarm) -> [UNNotificationAttachment] {
+        
+        //return if there is no image to attach
+        guard alarm.image.characters.count > 0 else { return [] }
+    
+        let fm = FileManager.default
+        
+        do {
+            //get the full path to the alrm image
+            let imageURL = Helper.getDocumentsDirectory().appendingPathComponent(alarm.image)
+            
+            //create a temporary filename
+            let copyURL = Helper.getDocumentsDirectory().appendingPathComponent("(UUID().uuidString).jpg")
+            
+            //copy the alrm image to the temporary filename
+            try fm.copyItem(at: imageURL, to: copyURL)
+            
+            //create an attachment from the temporary filename, giving it a random identifier
+            let attachment = try UNNotificationAttachment(identifier: UUID().uuidString, url: copyURL)
+            
+            //return the attachment back to the createNotificationRequest()
+            return [attachment]
+        } catch {
+            print("Failed to attach alarm image: \(error)")
+            return []
+        }
+    }
     
 }
 
