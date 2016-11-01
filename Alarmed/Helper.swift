@@ -18,4 +18,8 @@ struct Helper {
         
         return documentsDirectory
     }
+    
+    static func save() {
+        NotificationCenter.default.post(name: Notification.Name("save"), object: nil)
+    }
 }
